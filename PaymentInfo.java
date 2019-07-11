@@ -10,8 +10,10 @@
 public class PaymentInfo {
 	
 	private String paymentType;
-	private int creditcardNumber;
+	private int creditCardNumber;
 	private int cvv;
+	private String cardholderFirstName;
+	private String cardholderLastName;
 	/**
 	 * 
 	 */
@@ -21,14 +23,19 @@ public class PaymentInfo {
 	}
 	/**
 	 * @param paymentType
-	 * @param creditcardNumber
+	 * @param creditCardNumber
 	 * @param cvv
+	 * @param cardholderFirstName
+	 * @param cardholderLastName
 	 */
-	public PaymentInfo(String paymentType, int creditcardNumber, int cvv) {
+	public PaymentInfo(String paymentType, int creditCardNumber, int cvv, String cardholderFirstName,
+			String cardholderLastName) {
 		super();
 		this.paymentType = paymentType;
-		this.creditcardNumber = creditcardNumber;
+		this.creditCardNumber = creditCardNumber;
 		this.cvv = cvv;
+		this.cardholderFirstName = cardholderFirstName;
+		this.cardholderLastName = cardholderLastName;
 	}
 	/**
 	 * @return the paymentType
@@ -43,16 +50,16 @@ public class PaymentInfo {
 		this.paymentType = paymentType;
 	}
 	/**
-	 * @return the creditcardNumber
+	 * @return the creditCardNumber
 	 */
-	public long getCreditcardNumber() {
-		return creditcardNumber;
+	public int getCreditCardNumber() {
+		return creditCardNumber;
 	}
 	/**
-	 * @param creditcardNumber the creditcardNumber to set
+	 * @param creditCardNumber the creditCardNumber to set
 	 */
-	public void setCreditcardNumber(int creditcardNumber) {
-		this.creditcardNumber = creditcardNumber;
+	public void setCreditCardNumber(int creditCardNumber) {
+		this.creditCardNumber = creditCardNumber;
 	}
 	/**
 	 * @return the cvv
@@ -66,13 +73,37 @@ public class PaymentInfo {
 	public void setCvv(int cvv) {
 		this.cvv = cvv;
 	}
+	/**
+	 * @return the cardholderFirstName
+	 */
+	public String getCardholderFirstName() {
+		return cardholderFirstName;
+	}
+	/**
+	 * @param cardholderFirstName the cardholderFirstName to set
+	 */
+	public void setCardholderFirstName(String cardholderFirstName) {
+		this.cardholderFirstName = cardholderFirstName;
+	}
+	/**
+	 * @return the cardholderLastName
+	 */
+	public String getCardholderLastName() {
+		return cardholderLastName;
+	}
+	/**
+	 * @param cardholderLastName the cardholderLastName to set
+	 */
+	public void setCardholderLastName(String cardholderLastName) {
+		this.cardholderLastName = cardholderLastName;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "PaymentInfo [paymentType=" + paymentType + ", creditcardNumber=" + creditcardNumber + ", cvv=" + cvv
-				+ "]";
+		return "PaymentInfo [paymentType=" + paymentType + ", creditCardNumber=" + creditCardNumber + ", cvv=" + cvv
+				+ ", cardholderFirstName=" + cardholderFirstName + ", cardholderLastName=" + cardholderLastName + "]";
 	}
 	
 	

@@ -1,4 +1,5 @@
 import java.awt.List;
+import java.time.LocalDate;
 
 /**
  * @author Prajna Mendon
@@ -10,7 +11,7 @@ public class Orders {
 	private int orderId;
 	private Customer customer;
 	private int itemsOrdered;
-	private Date orderedDate;
+	private LocalDate orderedDate;
 	private double totalPrice;
 	private Address billingAddress;
 	private Address shippingAddress;
@@ -32,7 +33,7 @@ public class Orders {
 	 * @param shippingAddress
 	 * @param paymentinfo
 	 */
-	public Orders(int orderId, Customer customer, int itemsOrdered, Date orderedDate, double totalPrice,
+	public Orders(int orderId, Customer customer, int itemsOrdered, LocalDate orderedDate, double totalPrice,
 			Address billingAddress, Address shippingAddress, PaymentInfo paymentinfo) {
 		super();
 		this.orderId = orderId;
@@ -83,13 +84,13 @@ public class Orders {
 	/**
 	 * @return the orderedDate
 	 */
-	public Date getOrderedDate() {
+	public LocalDate getOrderedDate() {
 		return orderedDate;
 	}
 	/**
 	 * @param orderedDate the orderedDate to set
 	 */
-	public void setOrderedDate(Date orderedDate) {
+	public void setOrderedDate(LocalDate orderedDate) {
 		this.orderedDate = orderedDate;
 	}
 	/**
