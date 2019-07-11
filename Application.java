@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * 
@@ -15,8 +18,31 @@ import java.util.List;
  */
 public class Application {
 
-	public static void main(String[] args) {
+	public static int menu()
+	{
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter the Choice of Operation");
+		System.out.println("\n1.Displaying the Unordered List"
+				+ "\n2.Sort according to the OrderId "
+				+ "\n3.Sort according to the Name"
+				+ "\n4.Sort according to the BillingZipCode"
+				+ "\n5.Sort according to the ShippingZipCode"
+				+ "\n6.Serach by FirstName"
+				+ "\n7.Search by Last Name"
+				+ "\n8.Search by Order Id"
+				+ "\n9.Search by Billing Zip Code"
+				+ "\n10.Search by Shipping Zip Code"
+				+ "\n11.Quit");
+		//Getting the User Entered Value
+		int choice=scan.nextInt();
+		return choice;
+	}
+	public static void main(String[] args) 
+	{
 
+		int choice=menu();
+		Scanner mainScanner;
+		
 		Customer c1 = new Customer(1, "Prajna", "Mendon");
 		Customer c2 = new Customer(2, "Vansh", "Patel");
 		Customer c3 = new Customer(5, "Sujit", "Jadhav");
@@ -59,9 +85,7 @@ public class Application {
 		orderslist.add(o3);
 		orderslist.add(o4);
 		orderslist.add(o5);
-		System.out.println("----Printing the unordered list----");
-		orderslist.forEach(System.out::println);
-
+		
 		List<Orders> list = new ArrayList<Orders>();
 		list.add(o1);
 		list.add(o2);
@@ -69,35 +93,144 @@ public class Application {
 		list.add(o4);
 		list.add(o5);
 		
-		System.out.println("----Sorting according to the OrderId----");
-		Collections.sort(list, new SortById());
-		list.forEach(System.out::println);
+		while(choice!=11)
+		{
+			if(choice==1)
+			{
+				System.out.println("----Printing the unordered list----");
+				orderslist.forEach(System.out::println);
+				System.out.println("----------------------------------------------------");
+				
+				choice=menu();
+				
+			}
 		
-		System.out.println("----Sorting according to the Name----");
-		Collections.sort(list, new SortByName());
-		list.forEach(System.out::println);
-		
-		Collections.sort(list, new SortByBillingZipCode());
-		System.out.println("----Sorting according to the BillingZipCode----");
-		list.forEach(System.out::println);
-		
-		Collections.sort(list, new SortByShippingZipCode());
-		System.out.println("----Sorting according to the ShippingZipCode----");
-		list.forEach(System.out::println);
-		
-		
-		
-		
-		
-
-		System.out.println("Serach Order by Customer Last Name");
-		List<Orders> lastnamesearch = new ArrayList<Orders>();
-		for (Orders ord : orderslist) {
-			if (ord.getCustomer().getFirstName().contains("Prajna"))
-				lastnamesearch.add(ord);
-
+			else if (choice==2)
+			{
+				System.out.println("----Sorting according to the OrderId----");
+				Collections.sort(list, new SortById());
+				list.forEach(System.out::println);
+				System.out.println("----------------------------------------------------");
+				choice=menu();
+			}
+			else if (choice==3)
+			{
+				System.out.println("----Sorting according to the Name----");
+				Collections.sort(list, new SortByName());
+				list.forEach(System.out::println);
+				System.out.println("----------------------------------------------------");
+				choice=menu();
+			}
+			else if (choice==4)
+			{
+				Collections.sort(list, new SortByBillingZipCode());
+				System.out.println("----Sorting according to the BillingZipCode----");
+				list.forEach(System.out::println);
+				System.out.println("----------------------------------------------------");
+				choice=menu();
+			}
+			else if (choice==5)
+			{
+				Collections.sort(list, new SortByShippingZipCode());
+				System.out.println("----Sorting according to the ShippingZipCode----");
+				list.forEach(System.out::println);
+				System.out.println("----------------------------------------------------");
+				choice=menu();
+			}
+			else if (choice==6)
+			{
+				/*System.out.println("Search Order by Customer First Name");
+				mainScanner = new Scanner (System.in);
+				System.out.println("Enter the First Name to be Searched");
+				String firstname =mainScanner.nextLine();
+				List<Orders> firstnamesearch = new ArrayList<Orders>();
+				for (Orders ord : orderslist) 
+				{
+					if (ord.getCustomer().getFirstName().contains(firstname))
+						firstnamesearch.add(ord);
+				}
+				firstnamesearch.forEach(System.out::println);
+				System.out.println("----------------------------------------------------");
+				
+				choice=menu();*/
+				
+				Orders order = (Orders) orderslist
+						.stream()
+						.filter(x -> "ABDC".equals(x.getCustomer().getFirstName()))
+						.findAny()
+						.orElse(null);
+				System.out.println(order);
+				choice=menu();
+			}
+			else if (choice==7)
+			{
+				/*System.out.println("Serach Order by Customer Last Name");
+				mainScanner = new Scanner (System.in);
+				System.out.println("Enter the Last Name to be Searched");
+				String lastname =mainScanner.nextLine();
+				List<Orders> lastnamesearch = new ArrayList<Orders>();
+				for (Orders ord : orderslist) 
+				{
+					if (ord.getCustomer().getLastName().contains(lastname))
+						lastnamesearch.add(ord);
+				}
+				lastnamesearch.forEach(System.out::println);
+				System.out.println("----------------------------------------------------");
+				
+				choice=menu();*/
+				
+				Orders order = (Orders) orderslist
+						.stream()
+						.filter(x -> "ABDC".equals(x.getCustomer().getLastName()))
+						.findAny()
+						.orElse(null);
+				System.out.println(order);
+				choice=menu();
+			}
+			else if (choice==8)
+			{
+				System.out.println("Search Order by Order Id");
+				/*mainScanner = new Scanner (System.in);
+				System.out.println("Enter the Order Id to be Searched");
+				int orderid = mainScanner.nextInt();
+				List<Orders> lastnamesearch = new ArrayList<Orders>();
+				for (Orders ord : orderslist) 
+				{
+					if (ord.getOrderId().contains(orderid))
+						lastnamesearch.add(ord);
+				}
+				lastnamesearch.forEach(System.out::println);
+			}*/
+			Orders order = (Orders) orderslist
+					.stream()
+					.filter(x -> x.getOrderId()== 1001)
+					.findAny()
+					.orElse(null);
+			System.out.println(order);
+			choice=menu();
+			}
+			else if (choice==9)
+			{
+				System.out.println("Search by Billing Zip Code");
+			Orders order = (Orders) orderslist
+					.stream()
+					.filter(x -> x.getBillingAddress().getZipcode()== 20770)
+					.findAny()
+					.orElse(null);
+			System.out.println(order);
+			choice=menu();
+			}
+			else if (choice==10)
+			{
+				System.out.println("Search by Billing Zip Code");
+			Orders order = (Orders) orderslist
+					.stream()
+					.filter(x -> x.getShippingAddress().getZipcode()== 20770)
+					.findAny()
+					.orElse(null);
+			System.out.println(order);
+			choice=menu();
+			}
 		}
-		lastnamesearch.forEach(System.out::println);
-	}
-
+}
 }
