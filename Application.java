@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * 
@@ -14,6 +15,8 @@ import java.util.List;
  *         Modified Date : Jul 10, 2019
  */
 public class Application {
+	private static HashSet<Orders> orderslist;
+	private static List<Orders> list;
 
 	public static void main(String[] args) {
 
@@ -53,14 +56,14 @@ public class Application {
 		Orders o4 = new Orders(1011, c4, 30, LocalDate.of(05, 28, 2019), 210.00, b4, s4, p4);
 		Orders o5 = new Orders(1000, c5, 2, LocalDate.of(04, 10, 2019), 40.02, b5, s5, p5);
 
-		HashSet<Orders> orderslist = new HashSet<Orders>();
+		orderslist = new HashSet<Orders>();
 		orderslist.add(o1);
 		orderslist.add(o2);
 		orderslist.add(o3);
 		orderslist.add(o4);
 		orderslist.add(o5);
 
-		List<Orders> list = new ArrayList<Orders>();
+		list = new ArrayList<Orders>();
 		list.add(o1);
 		list.add(o2);
 		list.add(o3);
@@ -90,51 +93,52 @@ public class Application {
 		System.out.println("----Sorting according to the ShippingZipCode----");
 		list.forEach(System.out::println);
 		System.out.println("----------------------------------------------------");
-
 		
 		System.out.println("Search Order by Customer First Name");
-		Orders order = (Orders) orderslist
-						.stream()
-						.filter(x -> "ABDC".equals(x.getCustomer().getFirstName()))
-						.findAny()
-						.orElse(null);
-		System.out.println(order);
+		SearchByFirstName.searchByFirstName(list);
+		
+		System.out.println("----------------------------------------------------");
+		System.out.println("Search Order by Customer Last Name");
+		SearchByLastName.searchByLastName(list);
+		
+		System.out.println("----------------------------------------------------");
+		System.out.println("Search Order by Order Id");
+		SearchByOrderId.searchByOrderId(list);
+		
+		System.out.println("----------------------------------------------------");
+		System.out.println("Search by Billing Zip Code");
+		SearchByBillingZipCode.searchByBillingZipCode(list);
+		
+		System.out.println("----------------------------------------------------");
+		System.out.println("Search by Shipping Zip Code");
+		SearchByShippingZipCode.searchByShippingZipCode(list);
+		
+/*		System.out.println("Search Order by Customer First Name");
+		Orders order = orderslist.stream().filter(x -> "ABDC".equals(x.getCustomer().getFirstName())).findAny()
+				.orElse(null);
 
 		System.out.println("----------------------------------------------------");
 		System.out.println("Search Order by Customer Last Name");
-		Orders order1 = (Orders) orderslist
-						.stream()
-						.filter(x -> "ABDC".equals(x.getCustomer().getLastName()))
-						.findAny()
-						.orElse(null);
+		Orders order1 = orderslist.stream().filter(x -> "ABDC".equals(x.getCustomer().getLastName())).findAny()
+				.orElse(null);
 		System.out.println(order1);
 
 		System.out.println("----------------------------------------------------");
 		System.out.println("Search Order by Order Id");
-		Orders order2 = (Orders) orderslist
-						.stream()
-						.filter(x -> x.getOrderId() == 1001)
-						.findAny()
-						.orElse(null);
+		Orders order2 = orderslist.stream().filter(x -> x.getOrderId() == 1001).findAny().orElse(null);
 		System.out.println(order2);
 
 		System.out.println("----------------------------------------------------");
 		System.out.println("Search by Billing Zip Code");
-		Orders order3 = (Orders) orderslist
-						.stream()
-						.filter(x -> x.getBillingAddress().getZipcode() == 20770)
-						.findAny()
-						.orElse(null);
+		Orders order3 = (Orders) orderslist.stream().filter(x -> x.getBillingAddress().getZipcode() == 20770).findAny()
+				.orElse(null);
 		System.out.println(order3);
 
 		System.out.println("----------------------------------------------------");
 		System.out.println("Search by Shipping Zip Code");
-		Orders order4 = (Orders) orderslist
-						.stream()
-						.filter(x -> x.getShippingAddress().getZipcode() == 20770)
-						.findAny()
-						.orElse(null);
-		System.out.println(order4);
+		Orders order4 = (Orders) orderslist.stream().filter(x -> x.getShippingAddress().getZipcode() == 20770).findAny()
+				.orElse(null);
+		System.out.println(order4);*/
 
 	}
 }
