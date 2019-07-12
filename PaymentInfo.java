@@ -102,8 +102,11 @@ public class PaymentInfo {
 	 */
 	@Override
 	public String toString() {
-		return "PaymentInfo [paymentType=" + paymentType + ", creditCardNumber=" + creditCardNumber + ", cvv=" + cvv
-				+ ", cardholderFirstName=" + cardholderFirstName + ", cardholderLastName=" + cardholderLastName + "]";
+		return  "\n\t paymentType=" + paymentType + ",\n"
+				+"\t" +" creditCardNumber=" + creditCardNumber + ",\n"
+				+"\t"+ " cvv=" + cvv+ ",\n"
+				+"\t"+ " cardholderFirstName=" + cardholderFirstName + ",\n"
+				+"\t"+ " cardholderLastName=" + cardholderLastName;
 	}
 	
 	

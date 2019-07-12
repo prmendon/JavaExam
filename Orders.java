@@ -1,5 +1,4 @@
 import java.time.LocalDate;
-import java.util.stream.Stream;
 
 /**
  * @author Prajna Mendon
@@ -11,8 +10,8 @@ public class Orders {
 	private int orderId;
 	private Customer customer;
 	private int itemsOrdered;
+	private int unitPrice;
 	private LocalDate orderedDate;
-	private double totalPrice;
 	private Address billingAddress;
 	private Address shippingAddress;
 	private PaymentInfo paymentinfo;
@@ -35,17 +34,32 @@ public class Orders {
 	 * @param shippingAddress
 	 * @param paymentinfo
 	 */
-	public Orders(int orderId, Customer customer, int itemsOrdered, LocalDate orderedDate, double totalPrice,
+	public Orders(int orderId, Customer customer, int itemsOrdered,int unitPrice, LocalDate orderedDate, 
 			Address billingAddress, Address shippingAddress, PaymentInfo paymentinfo) {
 		super();
 		this.orderId = orderId;
 		this.customer = customer;
 		this.itemsOrdered = itemsOrdered;
+		this.unitPrice = unitPrice;
 		this.orderedDate = orderedDate;
-		this.totalPrice = totalPrice;
 		this.billingAddress = billingAddress;
 		this.shippingAddress = shippingAddress;
 		this.paymentinfo = paymentinfo;
+	}
+
+	
+	/**
+	 * @return the unitPrice
+	 */
+	public int getUnitPrice() {
+		return unitPrice;
+	}
+
+	/**
+	 * @param unitPrice the unitPrice to set
+	 */
+	public void setUnitPrice(int unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 
 	/**
@@ -107,16 +121,16 @@ public class Orders {
 	/**
 	 * @return the totalPrice
 	 */
-	public double getTotalPrice() {
-		return totalPrice;
+/*public double getTotalPrice() {
+		return itemsOrdered*unitPrice;
 	}
 
-	/**
+	*//**
 	 * @param totalPrice the totalPrice to set
-	 */
+	 *//*
 	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
+		this.totalPrice = itemsOrdered*unitPrice;
+	}*/
 
 	/**
 	 * @return the billingAddress
@@ -152,6 +166,12 @@ public class Orders {
 	public PaymentInfo getPaymentinfo() {
 		return paymentinfo;
 	}
+	
+	public double totalPrice()
+	{
+		double totalPrice = itemsOrdered*unitPrice;
+		return totalPrice;
+	}
 
 	/**
 	 * @param paymentinfo the paymentinfo to set
@@ -167,9 +187,16 @@ public class Orders {
 	 */
 	@Override
 	public String toString() {
-		return "Orders [orderId=" + orderId + ", customer=" + customer + ", itemsOrdered=" + itemsOrdered
-				+ ", orderedDate=" + orderedDate + ", totalPrice=" + totalPrice + ", billingAddress=" + billingAddress
-				+ ", shippingAddress=" + shippingAddress + ", paymentinfo=" + paymentinfo + "]";
+		return "Orders :----- \n"
+				+ "OrderId=" + orderId + ",\n"
+			   + " Customer:-" + customer + ",\n"
+			   + " ItemsOrdered=" + itemsOrdered + ",\n"
+			   + " Unit Price=" + unitPrice + ",\n"
+			   + " OrderedDate=" + orderedDate + ",\n"
+			   + " TotalPrice=" + this.totalPrice() + ",\n"
+			   + " BillingAddress:-" + billingAddress + ",\n"
+			   + " ShippingAddress:-" + shippingAddress + ",\n"
+			   + " Paymentinfo:-" + paymentinfo +"\n\n";
 	}
 
 }

@@ -5,10 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * 
- */
-
-/**
  * @author Prajna Mendon
  *
  *         Modified Date : Jul 10, 2019
@@ -16,7 +12,7 @@ import java.util.List;
 public class Application {
 	private static HashSet<Orders> orderslist;
 	private static List<Orders> list;
-
+	
 	public static void main(String[] args) {
 
 		Customer c1 = new Customer(1, "Prajna", "Mendon");
@@ -49,12 +45,12 @@ public class Application {
 		PaymentInfo p4 = new PaymentInfo("MasterCard", 555554444, 278, "ABC", "DEF");
 		PaymentInfo p5 = new PaymentInfo("MasterCard", 55554444, 159, "Doe", "Mike");
 
-		Orders o1 = new Orders(1001, c1, 12, LocalDate.of(01, 04, 2019), 120.0, b1, s1, p1);
-		Orders o2 = new Orders(1005, c2, 1, LocalDate.of(02, 21, 2019), 10.02, b2, s2, p2);
-		Orders o3 = new Orders(1004, c3, 25, LocalDate.of(05, 22, 2019), 190.05, b3, s3, p3);
-		Orders o4 = new Orders(1011, c4, 30, LocalDate.of(05, 28, 2019), 210.00, b4, s4, p4);
-		Orders o5 = new Orders(1000, c5, 2, LocalDate.of(04, 10, 2019), 40.02, b5, s5, p5);
-
+		Orders o1= new Orders(1001,c1,12,12,LocalDate.parse("2019-03-29"),b1,s1,p1);
+		Orders o2 = new Orders(1005, c2, 1,45, LocalDate.parse("2019-02-21"),  b2, s2, p2);
+		Orders o3 = new Orders(1004, c3, 25,78, LocalDate.parse("2018-05-05"),  b3, s3, p3);
+		Orders o4 = new Orders(1011, c4, 30,100, LocalDate.parse("2016-07-09"),  b4, s4, p4);
+		Orders o5 = new Orders(1000, c5, 2,12, LocalDate.parse("2019-03-01"),  b5, s5, p5);
+		
 		orderslist = new HashSet<Orders>();
 		orderslist.add(o1);
 		orderslist.add(o2);
@@ -92,52 +88,52 @@ public class Application {
 		System.out.println("----Sorting according to the ShippingZipCode----");
 		list.forEach(System.out::println);
 		System.out.println("----------------------------------------------------");
-		
+
 		System.out.println("Search Order by Customer First Name");
 		SearchByFirstName.searchByFirstName(list);
-		
+
 		System.out.println("----------------------------------------------------");
 		System.out.println("Search Order by Customer Last Name");
 		SearchByLastName.searchByLastName(list);
-		
+
 		System.out.println("----------------------------------------------------");
 		System.out.println("Search Order by Order Id");
 		SearchByOrderId.searchByOrderId(list);
-		
+
 		System.out.println("----------------------------------------------------");
 		System.out.println("Search by Billing Zip Code");
 		SearchByBillingZipCode.searchByBillingZipCode(list);
-		
+
 		System.out.println("----------------------------------------------------");
 		System.out.println("Search by Shipping Zip Code");
 		SearchByShippingZipCode.searchByShippingZipCode(list);
-		
-/*		System.out.println("Search Order by Customer First Name");
-		Orders order = orderslist.stream().filter(x -> "ABDC".equals(x.getCustomer().getFirstName())).findAny()
-				.orElse(null);
 
-		System.out.println("----------------------------------------------------");
-		System.out.println("Search Order by Customer Last Name");
-		Orders order1 = orderslist.stream().filter(x -> "ABDC".equals(x.getCustomer().getLastName())).findAny()
-				.orElse(null);
-		System.out.println(order1);
-
-		System.out.println("----------------------------------------------------");
-		System.out.println("Search Order by Order Id");
-		Orders order2 = orderslist.stream().filter(x -> x.getOrderId() == 1001).findAny().orElse(null);
-		System.out.println(order2);
-
-		System.out.println("----------------------------------------------------");
-		System.out.println("Search by Billing Zip Code");
-		Orders order3 = (Orders) orderslist.stream().filter(x -> x.getBillingAddress().getZipcode() == 20770).findAny()
-				.orElse(null);
-		System.out.println(order3);
-
-		System.out.println("----------------------------------------------------");
-		System.out.println("Search by Shipping Zip Code");
-		Orders order4 = (Orders) orderslist.stream().filter(x -> x.getShippingAddress().getZipcode() == 20770).findAny()
-				.orElse(null);
-		System.out.println(order4);*/
+		/*
+		 * System.out.println("Search Order by Customer First Name"); Orders order =
+		 * orderslist.stream().filter(x ->
+		 * "ABDC".equals(x.getCustomer().getFirstName())).findAny() .orElse(null);
+		 * 
+		 * System.out.println("----------------------------------------------------");
+		 * System.out.println("Search Order by Customer Last Name"); Orders order1 =
+		 * orderslist.stream().filter(x ->
+		 * "ABDC".equals(x.getCustomer().getLastName())).findAny() .orElse(null);
+		 * System.out.println(order1);
+		 * 
+		 * System.out.println("----------------------------------------------------");
+		 * System.out.println("Search Order by Order Id"); Orders order2 =
+		 * orderslist.stream().filter(x -> x.getOrderId() ==
+		 * 1001).findAny().orElse(null); System.out.println(order2);
+		 * 
+		 * System.out.println("----------------------------------------------------");
+		 * System.out.println("Search by Billing Zip Code"); Orders order3 = (Orders)
+		 * orderslist.stream().filter(x -> x.getBillingAddress().getZipcode() ==
+		 * 20770).findAny() .orElse(null); System.out.println(order3);
+		 * 
+		 * System.out.println("----------------------------------------------------");
+		 * System.out.println("Search by Shipping Zip Code"); Orders order4 = (Orders)
+		 * orderslist.stream().filter(x -> x.getShippingAddress().getZipcode() ==
+		 * 20770).findAny() .orElse(null); System.out.println(order4);
+		 */
 
 	}
 }
