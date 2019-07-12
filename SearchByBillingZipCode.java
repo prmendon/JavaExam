@@ -12,10 +12,9 @@ import java.util.stream.Stream;
  * Modified Date : Jul 11, 2019
  */
 public class SearchByBillingZipCode {
-	private static HashSet<Orders> orderslist ;
 	private static List<Orders> list;
 	
-	Stream<Orders> orders = orderslist.stream();
+	Stream<Orders> orders = list.stream();
 	
 	public static void searchByBillingZipCode(List<Orders> list) {
 		Orders order = list

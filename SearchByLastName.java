@@ -1,4 +1,3 @@
-import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -13,10 +12,9 @@ import java.util.stream.Stream;
  */
 public class SearchByLastName {
 
-	private static HashSet<Orders> orderslist;
 	private static List<Orders> list;
 
-	Stream<Orders> orders = orderslist.stream();
+	Stream<Orders> orders = list.stream();
 
 	public static void searchByLastName(List<Orders> list) {
 		Orders order = list.stream().filter(x -> "ABDC".equals(x.getCustomer().getLastName())).findAny().orElse(null);
